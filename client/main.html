@@ -26,10 +26,15 @@
   </body>
 
 <template name="main">
+  <form class="new-todo">
+    <div class="form-group">
+      <input type="text" class="form-control" name="text" placeholder="type a todo..." />
+    </div>
+  </form>
   {{#each todos}}
-    <li>
+    <li class="{{#if checked}}checked{{/if}}">
       <button class="delete-todo">X</button>
-      <input type="checkbox" class="toggle-check">
+      <input type="checkbox" checked="{{checked}}" class="toggle-check">
       <span class="text">{{title}}</span>
     </li>
   {{/each}}
