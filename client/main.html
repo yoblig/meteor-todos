@@ -11,6 +11,7 @@
     <div class="container">
       <div class="header clearfix">
         <h3 class="text-muted">Todos App</h3>
+        {{> loginButtons}}
       </div>
 
       <div class="row marketing">
@@ -26,15 +27,19 @@
   </body>
 
 <template name="main">
-  <form class="new-todo">
-    <div class="form-group">
-      <input type="text" class="form-control" name="text" placeholder="type a todo..." />
-    </div>
-  </form>
+  {{#if currentUser }}
+    <form class="new-todo">
+      <div class="form-group">
+        <input type="text" class="form-control" name="text" placeholder="type a todo..." />
+      </div>
+    </form>
+  {{/if}}
   {{#each todos}}
     <li class="{{#if checked}}checked{{/if}}">
+    {{#if currentUser }}
       <button class="delete-todo">X</button>
       <input type="checkbox" checked="{{checked}}" class="toggle-check">
+    {{/if}}
       <span class="text">{{title}}</span>
     </li>
   {{/each}}
